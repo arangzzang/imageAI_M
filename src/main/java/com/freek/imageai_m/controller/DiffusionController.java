@@ -1,6 +1,6 @@
 package com.freek.imageai_m.controller;
 
-import com.freek.imageai_m.serviece.Diffusionservice;
+//import com.freek.imageai_m.serviece.Diffusionservice;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 @Slf4j
 @RequestMapping("/image")
 @Component
-public class Corecontroller {
+public class DiffusionController {
 //    private Logger logger
 
     @Autowired
@@ -30,7 +30,7 @@ public class Corecontroller {
         return "index";
     }
 
-//    @RequestMapping(value="/", method = {RequestMethod.POST})
+    //    @RequestMapping(value="/", method = {RequestMethod.POST})
     public ModelAndView multipartabc(@RequestParam String item, @RequestParam MultipartFile file, HttpServletRequest req) {
 
         ModelAndView mv = new ModelAndView();

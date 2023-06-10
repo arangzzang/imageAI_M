@@ -20,7 +20,7 @@ import java.util.Map;
 @Service
 @Slf4j
 @RequestMapping("/image")
-public class Diffusioncall {
+public class DiffusionCall {
 
     @GetMapping("/restcall")
     public List<Map<String,Object>> restcalltest(HttpServletRequest requst, HttpServletResponse response){
