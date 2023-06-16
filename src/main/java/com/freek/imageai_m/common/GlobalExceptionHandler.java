@@ -3,7 +3,9 @@ package com.freek.imageai_m.common;
 //import com.booksdiary.global.error.exception.BusinessException;
 //import com.booksdiary.global.error.exception.EntityNotFoundException;
 //import com.booksdiary.global.error.exception.InvalidValueException;
+import com.freek.imageai_m.diffusion.controller.DiffusionController;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
@@ -22,17 +24,20 @@ import java.nio.file.AccessDeniedException;
  * <p>
  * ref https://cheese10yun.github.io/spring-guide-exception/
  */
-@Slf4j(topic = "ERROR_FILE_LOGGER")
+@Slf4j(topic = "rolling")
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+//    private static final Logger Logger = LoggerFactory.getLogger(DiffusionController.class);
     /**
      * javax.validation.Valid or @Validated 으로 binding error 발생시 발생한다.
      * HttpMessageConverter 에서 등록한 HttpMessageConverter binding 못할경우 발생
      * 주로 @RequestBody, @RequestPart 어노테이션에서 발생
      */
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     protected ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
-        log.error("handleMethodArgumentNotValidException", e);
+//        log.info("handleMethodArgumentNotValidException", e);
         Object ErrorCode;
         final ErrorResponse response = null;//ErrorResponse.of(ErrorCode.INVALID_INPUT_VALUE, e.getBindingResult());
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
@@ -40,7 +45,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     protected ResponseEntity<ErrorResponse> handleException(Exception e) {
-        log.error("Exception", e);
+//        log.error("Exception", e);
         final ErrorResponse response = null;//ErrorResponse.of(ErrorCode.INTERNAL_SERVER_ERROR);
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
