@@ -4,6 +4,8 @@ package com.freek.imageai_m.common;
 //import com.booksdiary.global.error.exception.EntityNotFoundException;
 //import com.booksdiary.global.error.exception.InvalidValueException;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
@@ -25,6 +27,7 @@ import java.nio.file.AccessDeniedException;
 @Slf4j(topic = "ERROR_FILE_LOGGER")
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+    Logger logger = LoggerFactory.getLogger("SampleLogger");
     /**
      * javax.validation.Valid or @Validated 으로 binding error 발생시 발생한다.
      * HttpMessageConverter 에서 등록한 HttpMessageConverter binding 못할경우 발생
@@ -32,7 +35,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     protected ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
-        log.error("handleMethodArgumentNotValidException", e);
+        logger.error("handleMethodArgumentNotValidException", e);
         Object ErrorCode;
         final ErrorResponse response = null;//ErrorResponse.of(ErrorCode.INVALID_INPUT_VALUE, e.getBindingResult());
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
@@ -40,7 +43,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     protected ResponseEntity<ErrorResponse> handleException(Exception e) {
-        log.error("Exception", e);
+        logger.error("Exception", e);
         final ErrorResponse response = null;//ErrorResponse.of(ErrorCode.INTERNAL_SERVER_ERROR);
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }

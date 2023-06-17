@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="ImageAiMApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-    <module name="imageAI_M" />
+    <module name="imageAI_M.main" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.freek.imageai_m.ImageAiMApplication" />
     <method v="2">
       <option name="Make" enabled="true" />

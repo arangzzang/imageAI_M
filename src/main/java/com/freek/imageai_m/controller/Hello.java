@@ -15,10 +15,9 @@ import java.util.Map;
 
 public class Hello {
 
-    @GetMapping("/")
-    @ResponseBody
+    @RequestMapping("/test")
     public String test(){
-        return "index";
+        return "/index";
     }
 
 //    @RequestMapping(value="/", method = {RequestMethod.POST})

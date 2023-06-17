@@ -1,0 +1,45 @@
+#spring setting
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views
+      suffix: .jsp
+  thymeleaf:
+    cache: 'false'
+  servlet:
+    multipart:
+      max-request-size: 10MB
+      max-file-size: 1MB
+      enabled: true
+
+
+#log setting
+logging:
+  level:
+    com:
+      freek:
+        imageai_m:
+          controller:
+            Hello: info
+    root: info
+  config:
+    classpath: logback.xml
+
+
+#server setting
+server:
+  servlet:
+    context-path: /Freek
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+    jsp:
+#      init-parameters:
+
+
+  port: '8083'
+  tomcat:
+    uri-encoding: utf-8
+    file-encoding: UTF-8
+

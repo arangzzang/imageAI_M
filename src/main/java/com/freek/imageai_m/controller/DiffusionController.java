@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 @RestController
 @Slf4j
 @RequestMapping("/image")
-@Component
+//@Component
 public class DiffusionController {
 //    private Logger logger
 
@@ -25,9 +25,8 @@ public class DiffusionController {
 //    Diffusionservice dfsService;
 
     @GetMapping("/home")
-    @ResponseBody
     public String test(){
-        return "index";
+        return "/index";
     }
 
     //    @RequestMapping(value="/", method = {RequestMethod.POST})
