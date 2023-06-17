@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestController
+//@RestController
 @Slf4j
 @RequestMapping("/image")
 
