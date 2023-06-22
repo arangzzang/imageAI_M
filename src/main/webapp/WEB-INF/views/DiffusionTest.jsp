@@ -13,8 +13,16 @@
 </head>
 <body>
 <div>
-  <form action="/image/">
+  <form action="/image/diffusionCall" method="post" enctype="multipart/form-data">
+    <input type="file">
+    <button type="submit">업로드</button>
+  </form>
+</div>
 
+<div>
+  <form action="/image/showImage" method="post" enctype="multipart/form-data">
+    <input type="text" name="fileName">
+    <button type="submit">showing</button>
   </form>
 </div>
 

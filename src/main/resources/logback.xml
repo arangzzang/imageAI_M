@@ -36,7 +36,4 @@
     <logger name="DEFAULT_FILE_LOGGER" level="DEBUG" additivity="true">
         <appender-ref ref="DEFAULT_FILE_APPENDER"/>
     </logger>
-<!--    <logger name="com.*" level="DEBUG" appender-ref="console">-->
-<!--        <appender-ref ref="ERROR_FILE_APPENDER"/>-->
-<!--    </logger>-->
 </configuration>
