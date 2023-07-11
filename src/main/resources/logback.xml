@@ -2,38 +2,71 @@
 <configuration>
 <!--    <include resource="org/springframework/boot/logging/logback/base.xml"/>-->
 
-    <property name="home" value="logs"/>
+<!--    <property name="home" value="logs"/>-->
 
-    <appender name="DEFAULT_FILE_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>${home}/access-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-            <maxFileSize>15mb</maxFileSize>
-            <maxHistory>30</maxHistory>
-        </rollingPolicy>
-        <encoder>
-            <charset>utf8</charset>
-            <pattern>${FILE_LOG_PATTERN}</pattern>
-        </encoder>
+<!--    <appender name="DEFAULT_FILE_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>${home}/access-%d{yyyy-MM-dd}.%i.log</fileNamePattern>-->
+<!--            <maxFileSize>15mb</maxFileSize>-->
+<!--            <maxHistory>30</maxHistory>-->
+<!--        </rollingPolicy>-->
+<!--        <encoder>-->
+<!--            <charset>utf8</charset>-->
+<!--            <pattern>${FILE_LOG_PATTERN}</pattern>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+<!--    <appender name="ERROR_FILE_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>${home}/error-%d{yyyy-MM-dd}.%i.log</fileNamePattern>-->
+<!--            <maxFileSize>15mb</maxFileSize>-->
+<!--            <maxHistory>30</maxHistory>-->
+<!--        </rollingPolicy>-->
+<!--        <encoder>-->
+<!--            <charset>utf8</charset>-->
+<!--            <pattern>${FILE_LOG_PATTERN}</pattern>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm}] %5p [%C{1}(%M:%L)] :%m%n%n" />
+        </layout>
     </appender>
 
-    <appender name="ERROR_FILE_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>${home}/error-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-            <maxFileSize>15mb</maxFileSize>
-            <maxHistory>30</maxHistory>
-        </rollingPolicy>
-        <encoder>
-            <charset>utf8</charset>
-            <pattern>${FILE_LOG_PATTERN}</pattern>
-        </encoder>
+    <appender name="rolling" class="org.apache.log4j.DailyRollingFileAppender">
+        <!-- 로그 파일 생성위치 -->
+        <!-- window 용 -->
+         <param name="file" value="F:/PJT/imageAI_M/resources/static/logs/log.log" />
+        <!-- linux 용 -->
+<!--        <param name="file" value="../logs/CustomPHsmc/log.log" />-->
+        <param name="Append" value="true" />
+        <param name="RollingStyle" value="Date" />
+        <param name="DatePattern" value="'.'yyyyMMdd" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] %-5p %C{1}.%M(%F:%L) - %m%n" />
+        </layout>
     </appender>
 
 
-    <logger name="ERROR_FILE_LOGGER" level="ERROR" additivity="true">
-        <appender-ref ref="ERROR_FILE_APPENDER"/>
+<!--    <logger name="ERROR_FILE_LOGGER" level="ERROR" additivity="true">-->
+<!--        <appender-ref ref="ERROR_FILE_APPENDER"/>-->
+<!--    </logger>-->
+
+<!--    <logger name="DEFAULT_FILE_LOGGER" level="DEBUG" additivity="true">-->
+<!--        <appender-ref ref="DEFAULT_FILE_APPENDER"/>-->
+<!--    </logger>-->
+
+    <logger name="com.freek.imageai_m.diffusion.controller" additivity="false">
+        <level value="info" />
+        <appender-ref ref="rolling" />
     </logger>
 
-    <logger name="DEFAULT_FILE_LOGGER" level="DEBUG" additivity="true">
-        <appender-ref ref="DEFAULT_FILE_APPENDER"/>
-    </logger>
+    <root>
+        <level value="error" />
+        <appender-ref ref="rolling" />
+    </root>
+
 </configuration>

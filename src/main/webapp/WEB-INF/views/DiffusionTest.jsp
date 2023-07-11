@@ -13,16 +13,31 @@
 </head>
 <body>
 <div>
-  <form action="/image/diffusionCall" method="post" enctype="multipart/form-data">
-    <input type="file">
+  <form action="/Freek/Diffusion/showImage" method="get" enctype="multipart/form-data">
+    <input type="file" name="paramF">
+    <input type="text" name="paramT">
     <button type="submit">업로드</button>
   </form>
 </div>
-
 <div>
-  <form action="/image/showImage" method="post" enctype="multipart/form-data">
-    <input type="text" name="fileName">
-    <button type="submit">showing</button>
+  <form action="/Freek/Diffusion/showImage2/{imagename}" method="get" enctype="multipart/form-data">
+    <input type="file" name="paramF">
+    <input type="text" name="imagename">
+    <button type="submit">업로드</button>
+  </form>
+</div>
+<div>
+  <form action="/Freek/Diffusion/showImage3" method="post" enctype="multipart/form-data">
+    <input type="file" name="paramF">
+    <input type="text" name="paramT">
+    <button type="submit">업로드</button>
+  </form>
+</div>
+<div>
+  <form action="Freek/Diffusion/showImage4" method="post" enctype="multipart/form-data">
+    <input type="file" name="paramF">
+    <input type="text" name="paramT">
+    <button type="submit">업로드</button>
   </form>
 </div>
 

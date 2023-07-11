@@ -12,7 +12,7 @@ import java.util.Map;
 
 @Controller
 @Slf4j
-//@RequestMapping("/image")
+@RequestMapping("/image")
 public class Hello {
 
     @GetMapping("/")

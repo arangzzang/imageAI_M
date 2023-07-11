@@ -34,11 +34,11 @@ server:
       charset: UTF-8
       enabled: true
       force: true
-    jsp:
+#    jsp:
 #      init-parameters:
 
 
-  port: '8083'
+  port: 8083
   tomcat:
     uri-encoding: utf-8
     file-encoding: UTF-8
